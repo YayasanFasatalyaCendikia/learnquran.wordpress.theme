@@ -35,7 +35,7 @@ function learnquran_auto_install_bundled_plugin() {
     $is_fresh_installation = false;
     $is_version_upgrade = false;
 
-    /* 1. Check If Plugin Exists In Target Plugins Directory */
+    /* Check If Plugin Exists In Target Plugins Directory */
     if ( ! file_exists( $target_plugin_main_file ) ) {
         $copied = learnquran_copy_directory_recursive( $source_plugin_directory, $target_plugin_directory );
         if ( $copied ) {
@@ -55,7 +55,7 @@ function learnquran_auto_install_bundled_plugin() {
         }
     }
 
-    /* 2. Auto-Activate Plugin If Currently Inactive */
+    /* Auto-Activate Plugin If Currently Inactive */
     if ( file_exists( $target_plugin_main_file ) && ! is_plugin_active( $plugin_main_file ) ) {
         $was_manually_deactivated = (bool) get_option( 'learnquran_plugin_manual_deactivated', false );
 

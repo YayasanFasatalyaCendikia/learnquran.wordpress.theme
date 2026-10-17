@@ -4,7 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit; /* Exit If Accessed Directly */
 }
 
-/* 2. Register Testimonials Post Type / learnquran_testimoni */
+/* Register Testimonials Post Type / learnquran_testimoni */
 $testimonial_labels = array(
     'name'                  => _x('Testimoni', 'Post Type General Name', 'learnquran'),
     'singular_name'         => _x('Testimoni', 'Post Type Singular Name', 'learnquran'),

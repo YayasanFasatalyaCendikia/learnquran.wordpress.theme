@@ -4,7 +4,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit; /* Exit If Accessed Directly */
 }
 
-/* 1. Register Learning Programs Post Type / learnquran_program */
+/* Register Learning Programs Post Type / learnquran_program */
 $program_labels = array(
     'name'                  => _x('Program Belajar', 'Post Type General Name', 'learnquran'),
     'singular_name'         => _x('Program Belajar', 'Post Type Singular Name', 'learnquran'),
