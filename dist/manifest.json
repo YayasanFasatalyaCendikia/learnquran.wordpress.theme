@@ -4,12 +4,12 @@
     "src": "src/assets/logo.png"
   },
   "src/main.js": {
-    "file": "assets/main-DKZP7JrI.js",
+    "file": "assets/main-CsWwKaGK.js",
     "name": "main",
     "src": "src/main.js",
     "isEntry": true,
     "css": [
-      "assets/main-Cg8cj_TQ.css"
+      "assets/main-s0WF4IPP.css"
     ],
     "assets": [
       "assets/logo-Co87cxHK.png"
