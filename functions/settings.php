@@ -118,7 +118,7 @@ function learnquran_setup_default_footer_menu() {
                     'url'      => '#',
                     'children' => [
                         [ 'title' => 'Kantor & Lokasi Belajar', 'url' => 'https://maps.google.com' ],
-                        [ 'title' => 'Konsultasi WhatsApp', 'url' => 'https://wa.me/628111032458' ],
+                        [ 'title' => 'Konsultasi WhatsApp', 'url' => 'https://wa.me/6282266331136' ],
                         [ 'title' => 'Email Resmi', 'url' => 'mailto:info@nuraniahlearningcenter.com' ],
                     ],
                 ],

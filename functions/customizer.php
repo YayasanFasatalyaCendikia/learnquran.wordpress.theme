@@ -12,10 +12,18 @@ function learnquran_get_theme_options() {
             'terms_conditions_url' => get_theme_mod( 'learnquran_terms_conditions_url', '/termsconditions' ),
         ],
         'footer' => [
-            'bio_desc' => get_theme_mod( 'learnquran_footer_desc', "Platform pembelajaran Al-Qur'an modern dan interaktif untuk anak~anak, remaja, hingga dewasa dengan metode teruji dan guru tersertifikasi." ),
+            'bio_desc'           => get_theme_mod( 'learnquran_footer_desc', "Platform pembelajaran Al-Qur'an modern dan interaktif untuk anak~anak, remaja, hingga dewasa dengan metode teruji dan guru tersertifikasi." ),
+            'playstore_enable'   => (bool) get_theme_mod( 'learnquran_footer_playstore_enable', get_theme_mod( 'learnquran_footer_app_enable', true ) ),
+            'playstore_url'      => get_theme_mod( 'learnquran_footer_playstore_url', get_theme_mod( 'learnquran_footer_app_url', 'https://play.google.com' ) ),
+            'playstore_subtitle' => get_theme_mod( 'learnquran_footer_playstore_subtitle', get_theme_mod( 'learnquran_footer_app_subtitle', 'Temukan Di' ) ),
+            'playstore_title'    => get_theme_mod( 'learnquran_footer_playstore_title', get_theme_mod( 'learnquran_footer_app_title', 'Google Play' ) ),
+            'appstore_enable'    => (bool) get_theme_mod( 'learnquran_footer_appstore_enable', true ),
+            'appstore_url'       => get_theme_mod( 'learnquran_footer_appstore_url', 'https://apple.com/app-store' ),
+            'appstore_subtitle'  => get_theme_mod( 'learnquran_footer_appstore_subtitle', 'Download Di' ),
+            'appstore_title'     => get_theme_mod( 'learnquran_footer_appstore_title', 'App Store' ),
         ],
         'contact' => [
-            'whatsapp'    => get_theme_mod( 'learnquran_whatsapp', '628111032458' ),
+            'whatsapp'    => get_theme_mod( 'learnquran_whatsapp', '6282266331136' ),
             'email'       => get_theme_mod( 'learnquran_email', 'info@nuraniahlearningcenter.com' ),
             'address'     => get_theme_mod( 'learnquran_address', 'Indonesia (Layanan Guru ke Rumah & Online Seluruh Kota)' ),
             'instagram'   => get_theme_mod( 'learnquran_instagram', 'https://instagram.com' ),
@@ -282,7 +290,7 @@ function learnquran_customize_register( $wp_customize ) {
 
     /* WhatsApp Contact */
     $wp_customize->add_setting( 'learnquran_whatsapp', [
-        'default'           => '628111032458',
+        'default'           => '6282266331136',
         'sanitize_callback' => 'sanitize_text_field',
         'transport'         => 'refresh',
     ] );
@@ -1228,6 +1236,110 @@ function learnquran_customize_register( $wp_customize ) {
         'description' => __( 'Teks ringkas pengenalan profil lembaga di bawah logo footer.', 'learnquran' ),
         'section'     => 'learnquran_footer_menu_section',
         'type'        => 'textarea',
+    ] );
+
+    /* Google Play Store Button Visibility Setting And Control */
+    $wp_customize->add_setting( 'learnquran_footer_playstore_enable', [
+        'default'           => true,
+        'sanitize_callback' => 'wp_validate_boolean',
+        'transport'         => 'refresh',
+    ] );
+    $wp_customize->add_control( 'learnquran_footer_playstore_enable', [
+        'label'       => __( 'Tampilkan Tombol Google Play / APK', 'learnquran' ),
+        'description' => __( 'Tampilkan tombol download Google Play di bawah kolom Hubungi Kami.', 'learnquran' ),
+        'section'     => 'learnquran_footer_menu_section',
+        'type'        => 'checkbox',
+    ] );
+
+    /* Google Play Store URL Setting And Control */
+    $wp_customize->add_setting( 'learnquran_footer_playstore_url', [
+        'default'           => 'https://play.google.com',
+        'sanitize_callback' => 'learnquran_sanitize_relative_or_absolute_url',
+        'transport'         => 'refresh',
+    ] );
+    $wp_customize->add_control( 'learnquran_footer_playstore_url', [
+        'label'       => __( 'URL Google Play Store / Link APK', 'learnquran' ),
+        'description' => __( 'Tautan aplikasi di Google Play Store atau file APK / contoh: https://play.google.com/store/apps/... /', 'learnquran' ),
+        'section'     => 'learnquran_footer_menu_section',
+        'type'        => 'text',
+    ] );
+
+    /* Google Play Store Subtitle Setting And Control */
+    $wp_customize->add_setting( 'learnquran_footer_playstore_subtitle', [
+        'default'           => 'Temukan Di',
+        'sanitize_callback' => 'sanitize_text_field',
+        'transport'         => 'refresh',
+    ] );
+    $wp_customize->add_control( 'learnquran_footer_playstore_subtitle', [
+        'label'       => __( 'Google Play: Label Baris Atas / Subtitle', 'learnquran' ),
+        'description' => __( 'Teks kecil di atas nama store / contoh: Temukan Di atau Get It On /', 'learnquran' ),
+        'section'     => 'learnquran_footer_menu_section',
+        'type'        => 'text',
+    ] );
+
+    /* Google Play Store Title Setting And Control */
+    $wp_customize->add_setting( 'learnquran_footer_playstore_title', [
+        'default'           => 'Google Play',
+        'sanitize_callback' => 'sanitize_text_field',
+        'transport'         => 'refresh',
+    ] );
+    $wp_customize->add_control( 'learnquran_footer_playstore_title', [
+        'label'       => __( 'Google Play: Judul Utama Tombol', 'learnquran' ),
+        'description' => __( 'Nama store / contoh: Google Play atau Download APK /', 'learnquran' ),
+        'section'     => 'learnquran_footer_menu_section',
+        'type'        => 'text',
+    ] );
+
+    /* Apple App Store Button Visibility Setting And Control */
+    $wp_customize->add_setting( 'learnquran_footer_appstore_enable', [
+        'default'           => true,
+        'sanitize_callback' => 'wp_validate_boolean',
+        'transport'         => 'refresh',
+    ] );
+    $wp_customize->add_control( 'learnquran_footer_appstore_enable', [
+        'label'       => __( 'Tampilkan Tombol Apple App Store', 'learnquran' ),
+        'description' => __( 'Tampilkan tombol download App Store di bawah kolom Hubungi Kami.', 'learnquran' ),
+        'section'     => 'learnquran_footer_menu_section',
+        'type'        => 'checkbox',
+    ] );
+
+    /* Apple App Store URL Setting And Control */
+    $wp_customize->add_setting( 'learnquran_footer_appstore_url', [
+        'default'           => 'https://apple.com/app-store',
+        'sanitize_callback' => 'learnquran_sanitize_relative_or_absolute_url',
+        'transport'         => 'refresh',
+    ] );
+    $wp_customize->add_control( 'learnquran_footer_appstore_url', [
+        'label'       => __( 'URL Apple App Store', 'learnquran' ),
+        'description' => __( 'Tautan aplikasi di Apple App Store / contoh: https://apps.apple.com/... /', 'learnquran' ),
+        'section'     => 'learnquran_footer_menu_section',
+        'type'        => 'text',
+    ] );
+
+    /* Apple App Store Subtitle Setting And Control */
+    $wp_customize->add_setting( 'learnquran_footer_appstore_subtitle', [
+        'default'           => 'Download Di',
+        'sanitize_callback' => 'sanitize_text_field',
+        'transport'         => 'refresh',
+    ] );
+    $wp_customize->add_control( 'learnquran_footer_appstore_subtitle', [
+        'label'       => __( 'App Store: Label Baris Atas / Subtitle', 'learnquran' ),
+        'description' => __( 'Teks kecil di atas nama store / contoh: Download Di atau Download On The /', 'learnquran' ),
+        'section'     => 'learnquran_footer_menu_section',
+        'type'        => 'text',
+    ] );
+
+    /* Apple App Store Title Setting And Control */
+    $wp_customize->add_setting( 'learnquran_footer_appstore_title', [
+        'default'           => 'App Store',
+        'sanitize_callback' => 'sanitize_text_field',
+        'transport'         => 'refresh',
+    ] );
+    $wp_customize->add_control( 'learnquran_footer_appstore_title', [
+        'label'       => __( 'App Store: Judul Utama Tombol', 'learnquran' ),
+        'description' => __( 'Nama store / contoh: App Store /', 'learnquran' ),
+        'section'     => 'learnquran_footer_menu_section',
+        'type'        => 'text',
     ] );
 
     /* Section: Kebijakan Privasi */

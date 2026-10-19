@@ -66,3 +66,11 @@ function vue_theme_api_permission( $permission ) {
 
     return $permission;
 }
+
+/* Ensure Relative Rewrite Rules For Reverse Proxy And Subfolder Environments */
+function learnquran_filter_mod_rewrite_rules( $rules ) {
+    $rules = preg_replace( '/RewriteBase\s+[^\r\n]+[\r\n]*/', '', $rules );
+    $rules = preg_replace( '/RewriteRule\s+\.\s+\/index\.php\s+\[L\]/', 'RewriteRule . index.php [L]', $rules );
+    return $rules;
+}
+add_filter( 'mod_rewrite_rules', 'learnquran_filter_mod_rewrite_rules' );

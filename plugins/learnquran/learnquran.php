@@ -3,7 +3,7 @@
  * Plugin Name:       Learn Quran Core
  * Plugin URI:        https://syifarahmat.click/
  * Description:       Plugin pendamping resmi untuk tema Learn Quran. Mendukung portabilitas media konten dinamis, kustomisasi halaman login, dan kompatibilitas tema Nuraniah Learning Center.
- * Version:           26.10.1718
+ * Version:           26.10.1911
  * Author:            Rahmat Sifa'i ~ gmail@syifarahmat.click
  * Author URI:        https://syifarahmat.click/
  * License:           GPL-2.0+
@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /* Define Plugin Constants */
-define( 'LEARNQURAN_PLUGIN_VERSION', '26.10.1718' );
+define( 'LEARNQURAN_PLUGIN_VERSION', '26.10.1911' );
 define( 'LEARNQURAN_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'LEARNQURAN_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 
