@@ -26,4 +26,8 @@ require_once __DIR__ . '/installer.php';
 /* Dynamic OpenGraph And Social Share Meta Tags */
 require_once __DIR__ . '/opengraph.php';
 
+/* GitHub Release Automatic Theme Updater */
+require_once __DIR__ . '/updater.php';
+
+
 
